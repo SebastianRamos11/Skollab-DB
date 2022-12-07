@@ -2,8 +2,6 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2022 a las 20:33:55
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -67,29 +65,29 @@ INSERT INTO `tipo_documento` (`ID_Tipo_Documento`, `tipo`) VALUES
 
 CREATE TABLE `ambiente_virtual` (
   `ID_Persona` int(10) DEFAULT NULL,
-  `ID_Programa` bigint(10) DEFAULT NULL,
-  `ID_Ficha` bigint(10) DEFAULT NULL
+  `ID_Materia` int(10) DEFAULT NULL,
+  `ID_Ficha` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ambiente_virtual`
 --
 
-INSERT INTO `ambiente_virtual` (`ID_Persona`, `ID_Programa`, `ID_Ficha`) VALUES
-(4, 1000, 3030303),
-(4, 3000, 3030303),
-(5, 1000, 3030303),
-(5, 3000, 3030303),
-(6, 1000, 3030303),
-(6, 3000, 3030303),
-(7, 1000, 3030303),
-(7, 3000, 3030303),
-(8, 1000, 3030303),
-(8, 3000, 3030303),
-(9, 1000, 3030303),
-(9, 3000, 3030303),
-(3, 1000, 3030303),
-(2, 3000, 3030303);
+INSERT INTO `ambiente_virtual` (`ID_Persona`, `ID_Materia`, `ID_Ficha`) VALUES
+(2, 2, 1),
+(3, 1, 1),
+(4, 1, 1),
+(4, 2, 1),
+(5, 1, 1),
+(5, 2, 1),
+(6, 1, 1),
+(6, 2, 1),
+(7, 1, 1),
+(7, 2, 1),
+(8, 1, 1),
+(8, 2, 1),
+(9, 1, 1),
+(9, 2, 1);
 
 
 -- --------------------------------------------------------
@@ -99,13 +97,13 @@ INSERT INTO `ambiente_virtual` (`ID_Persona`, `ID_Programa`, `ID_Ficha`) VALUES
 --
 
 CREATE TABLE `evidencia` (
-  `ID_Evidencia` int(11) NOT NULL,
+  `ID_Evidencia` int(10) NOT NULL,
   `ID_Persona` int(10) NOT NULL,
-  `ID_Actividad` int(11) NOT NULL,
+  `ID_Actividad` int(10) NOT NULL,
   `descripcion` varchar(400) DEFAULT NULL,
   `fecha` date NOT NULL,
   `url` varchar(1000) DEFAULT NULL,
-  `nota` bigint(3) DEFAULT NULL,
+  `nota` int(3) DEFAULT NULL,
   `observacion` varchar(400) DEFAULT NULL,
   `nivelada` int(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -117,16 +115,17 @@ CREATE TABLE `evidencia` (
 --
 
 CREATE TABLE `ficha` (
-  `ID_Ficha` bigint(10) NOT NULL,
-  `codigo` bigint(10) NOT NULL 
+  `ID_Ficha` int(10) NOT NULL,
+  `numero` int(10) NOT NULL,
+  `codigo` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ficha`
 --
 
-INSERT INTO `ficha` (`ID_Ficha`, `codigo`) VALUES
-(3030303, 2022);
+INSERT INTO `ficha` (`ID_Ficha`, `numero`, `codigo`) VALUES
+(1, 1101, 2022);
 
 -- --------------------------------------------------------
 
@@ -138,12 +137,12 @@ CREATE TABLE `persona` (
   `ID_Persona` int(10) NOT NULL,
   `ID_Tipo_Documento` int(10) NOT NULL,
   `ID_Rol` int(10) NOT NULL,
-  `num_documento` bigint(10) NOT NULL,
+  `num_documento` int(10) NOT NULL,
   `nombres` varchar(20) NOT NULL,
   `apellidos` varchar(20) NOT NULL,
   `correo_electronico` varchar(50) NOT NULL,
   `contraseña` varchar(155) NOT NULL,
-  `telefono` bigint(10) DEFAULT NULL
+  `telefono` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -163,30 +162,32 @@ INSERT INTO `persona` (`ID_Persona`, `num_documento`, `ID_Tipo_Documento`, `nomb
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `programa_formacion`
+-- Estructura de tabla para la tabla `materia`
 --
 
-CREATE TABLE `programa_formacion` (
-  `ID_Programa` bigint(10) NOT NULL,
-  `nombre` varchar(100) NOT NULL
+CREATE TABLE `materia` (
+  `ID_Materia` int(10) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(1000) DEFAULT NULL,
+  `img` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `programa_formacion`
+-- Volcado de datos para la tabla `materia`
 --
 
-INSERT INTO `programa_formacion` (`ID_Programa`, `nombre`) VALUES
-(1000, 'ANÁLISIS Y DESARROLLO DE SISTEMAS DE INFORMACIÓN'),
-(3000, 'PROMOVER');
+INSERT INTO `materia` (`ID_Materia`, `nombre`, `descripcion`, `img`) VALUES
+(1, 'ANÁLISIS Y DESARROLLO DE SISTEMAS DE INFORMACIÓN', "El programa de formación ADSI (Análisis y Desarrollo de Sistemas de Información) del Centro de Servicios Financieros en la Regional Distrito Capital SENA (Servicio Nacional de Aprendizaje), en Bogotá Colombia, es un foco para el desarrollo de las competencias en desarrollo de software y TIC, que prepara a los aprendices para la vida y el trabajo, con lo cual se pretende impulsar el crecimiento de múltiples sectores laborales, el perfil de los egresados les permite proponer soluciones en la empresa, que ayuden a mejorar los diferentes procesos. Durante el tiempo que se lleva orientando esta formación los aprendices han mostrado excelentes resultados en competencias que realiza la entidad.", "../file-store/subjects/sena-logo.png"),
+(2, 'MATEMÁTICAS', "Contribuir transversalmente a la formación integral de los aprendices y comunidad educativa propiciando condiciones, posibilidades y estrategias que contribuyan a elevar la calidad de vida de los aprendices, y de la comunidad durante la permanencia en el SENA.", "../file-store/subjects/sena-logo.png");
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `actividad`
 --
 
 CREATE TABLE `actividad` (
-  `ID_Actividad` int(11) NOT NULL,
+  `ID_Actividad` int(10) NOT NULL,
   `ID_Persona` int(10) NOT NULL,
-  `ID_Ficha` bigint(10) NOT NULL,
+  `ID_Ficha` int(10) NOT NULL,
   `asunto` varchar(60) NOT NULL,
   `descripcion` varchar(400) DEFAULT NULL,
   `fecha` date NOT NULL,
@@ -201,7 +202,7 @@ CREATE TABLE `actividad` (
 --
 
 CREATE TABLE `anuncio` (
-  `ID_Anuncio` int(11) NOT NULL,
+  `ID_Anuncio` int(10) NOT NULL,
   `ID_Persona` int(10) NOT NULL,
   `asunto` varchar(60) NOT NULL,
   `descripcion` varchar(400) NOT NULL,
@@ -221,7 +222,7 @@ CREATE TABLE `anuncio` (
 --
 ALTER TABLE `ambiente_virtual`
   ADD KEY `ID_Persona` (`ID_Persona`),
-  ADD KEY `ID_Programa` (`ID_Programa`),
+  ADD KEY `ID_Materia` (`ID_Materia`),
   ADD KEY `ID_Ficha` (`ID_Ficha`);
 
 --
@@ -253,10 +254,10 @@ ALTER TABLE `persona`
   ADD PRIMARY KEY (`ID_Persona`);
 
 --
--- Indices de la tabla `programa_formacion`
+-- Indices de la tabla `materia`
 --
-ALTER TABLE `programa_formacion`
-  ADD PRIMARY KEY (`ID_Programa`);
+ALTER TABLE `materia`
+  ADD PRIMARY KEY (`ID_Materia`);
 
 --
 -- Indices de la tabla `actividad`
@@ -290,23 +291,35 @@ ALTER TABLE `persona`
   MODIFY `ID_Persona` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
+-- AUTO_INCREMENT de la tabla `ficha`
+--
+ALTER TABLE `ficha`
+  MODIFY `ID_Ficha` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- AUTO_INCREMENT de la tabla `materia`
+--
+ALTER TABLE `materia`
+  MODIFY `ID_Materia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
 -- AUTO_INCREMENT de la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  MODIFY `ID_Actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_Actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `anuncio`
 --
 ALTER TABLE `anuncio`
-  MODIFY `ID_Anuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_Anuncio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 
 --
 -- AUTO_INCREMENT de la tabla `evidencia`
 --
 ALTER TABLE `evidencia`
-  MODIFY `ID_Evidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_Evidencia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -329,7 +342,7 @@ ALTER TABLE `tipo_documento`
 --
 ALTER TABLE `ambiente_virtual`
   ADD CONSTRAINT `ambiente_virtual_ibfk_1` FOREIGN KEY (`ID_Persona`) REFERENCES `persona` (`ID_Persona`),
-  ADD CONSTRAINT `ambiente_virtual_ibfk_2` FOREIGN KEY (`ID_Programa`) REFERENCES `programa_formacion` (`ID_Programa`),
+  ADD CONSTRAINT `ambiente_virtual_ibfk_2` FOREIGN KEY (`ID_Materia`) REFERENCES `materia` (`ID_Materia`),
   ADD CONSTRAINT `ambiente_virtual_ibfk_3` FOREIGN KEY (`ID_Ficha`) REFERENCES `ficha` (`ID_Ficha`);
 
 
