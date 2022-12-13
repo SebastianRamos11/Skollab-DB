@@ -129,6 +129,7 @@ CREATE TABLE `evidencia` (
 CREATE TABLE `ficha` (
   `ID_Ficha` int(10) NOT NULL,
   `numero` int(10) NOT NULL,
+  `descripcion` varchar(1000) DEFAULT NULL,
   `codigo` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,7 +139,7 @@ CREATE TABLE `ficha` (
 
 INSERT INTO `ficha` (`ID_Ficha`, `numero`, `codigo`) VALUES
 (1, 1101, 2022);
-
+g
 -- --------------------------------------------------------
 
 --
