@@ -64,31 +64,43 @@ INSERT INTO `tipo_documento` (`ID_Tipo_Documento`, `tipo`) VALUES
 --
 
 CREATE TABLE `ambiente_virtual` (
-  `ID_Persona` int(10) DEFAULT NULL,
-  `ID_Materia` int(10) DEFAULT NULL,
-  `ID_Ficha` int(10) DEFAULT NULL
+  `ID_Persona` int(10) NOT NULL,
+  `ID_Ficha` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ambiente_virtual`
 --
 
-INSERT INTO `ambiente_virtual` (`ID_Persona`, `ID_Materia`, `ID_Ficha`) VALUES
-(2, 2, 1),
-(3, 1, 1),
-(4, 1, 1),
-(4, 2, 1),
-(5, 1, 1),
-(5, 2, 1),
-(6, 1, 1),
-(6, 2, 1),
-(7, 1, 1),
-(7, 2, 1),
-(8, 1, 1),
-(8, 2, 1),
-(9, 1, 1),
-(9, 2, 1);
+INSERT INTO `ambiente_virtual` (`ID_Persona`, `ID_Ficha`) VALUES
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `curso`
+--
+
+CREATE TABLE `curso` (
+  `ID_Ficha` int(10) NOT NULL,
+  `ID_Materia` int(10) NOT NULL,
+  `ID_Instructor` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `curso`
+--
+
+INSERT INTO `curso` (`ID_Ficha`, `ID_Materia`, `ID_Instructor`) VALUES
+(1, 1, 3),
+(1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -179,6 +191,7 @@ CREATE TABLE `materia` (
 INSERT INTO `materia` (`ID_Materia`, `nombre`, `descripcion`, `img`) VALUES
 (1, 'ANÁLISIS Y DESARROLLO DE SISTEMAS DE INFORMACIÓN', "El programa de formación ADSI (Análisis y Desarrollo de Sistemas de Información) del Centro de Servicios Financieros en la Regional Distrito Capital SENA (Servicio Nacional de Aprendizaje), en Bogotá Colombia, es un foco para el desarrollo de las competencias en desarrollo de software y TIC, que prepara a los aprendices para la vida y el trabajo, con lo cual se pretende impulsar el crecimiento de múltiples sectores laborales, el perfil de los egresados les permite proponer soluciones en la empresa, que ayuden a mejorar los diferentes procesos. Durante el tiempo que se lleva orientando esta formación los aprendices han mostrado excelentes resultados en competencias que realiza la entidad.", "../file-store/subjects/sena-logo.png"),
 (2, 'MATEMÁTICAS', "Contribuir transversalmente a la formación integral de los aprendices y comunidad educativa propiciando condiciones, posibilidades y estrategias que contribuyan a elevar la calidad de vida de los aprendices, y de la comunidad durante la permanencia en el SENA.", "../file-store/subjects/sena-logo.png");
+
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `actividad`
@@ -218,11 +231,18 @@ CREATE TABLE `anuncio` (
 --
 
 --
+-- Indices de la tabla `curso`
+--
+ALTER TABLE `curso`
+  ADD KEY `ID_Ficha` (`ID_Ficha`),
+  ADD KEY `ID_Materia` (`ID_Materia`),
+  ADD KEY `ID_Instructor` (`ID_Instructor`);
+
+--
 -- Indices de la tabla `ambiente_virtual`
 --
 ALTER TABLE `ambiente_virtual`
   ADD KEY `ID_Persona` (`ID_Persona`),
-  ADD KEY `ID_Materia` (`ID_Materia`),
   ADD KEY `ID_Ficha` (`ID_Ficha`);
 
 --
@@ -338,12 +358,19 @@ ALTER TABLE `tipo_documento`
 --
 
 --
+-- Filtros para la tabla `curso`
+--
+ALTER TABLE `curso`
+  ADD CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`ID_Ficha`) REFERENCES `ficha` (`ID_Ficha`),
+  ADD CONSTRAINT `curso_ibfk_2` FOREIGN KEY (`ID_Materia`) REFERENCES `materia` (`ID_Materia`),
+  ADD CONSTRAINT `curso_ibfk_3` FOREIGN KEY (`ID_Instructor`) REFERENCES `persona` (`ID_Persona`);
+
+--
 -- Filtros para la tabla `ambiente_virtual`
 --
 ALTER TABLE `ambiente_virtual`
   ADD CONSTRAINT `ambiente_virtual_ibfk_1` FOREIGN KEY (`ID_Persona`) REFERENCES `persona` (`ID_Persona`),
-  ADD CONSTRAINT `ambiente_virtual_ibfk_2` FOREIGN KEY (`ID_Materia`) REFERENCES `materia` (`ID_Materia`),
-  ADD CONSTRAINT `ambiente_virtual_ibfk_3` FOREIGN KEY (`ID_Ficha`) REFERENCES `ficha` (`ID_Ficha`);
+  ADD CONSTRAINT `ambiente_virtual_ibfk_2` FOREIGN KEY (`ID_Ficha`) REFERENCES `ficha` (`ID_Ficha`);
 
 
 --
