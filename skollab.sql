@@ -139,7 +139,7 @@ CREATE TABLE `ficha` (
 
 INSERT INTO `ficha` (`ID_Ficha`, `numero`, `codigo`) VALUES
 (1, 1101, 2022);
-g
+
 -- --------------------------------------------------------
 
 --
@@ -181,7 +181,6 @@ INSERT INTO `persona` (`ID_Persona`, `num_documento`, `ID_Tipo_Documento`, `nomb
 CREATE TABLE `materia` (
   `ID_Materia` int(10) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(1000) DEFAULT NULL,
   `img` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -189,9 +188,9 @@ CREATE TABLE `materia` (
 -- Volcado de datos para la tabla `materia`
 --
 
-INSERT INTO `materia` (`ID_Materia`, `nombre`, `descripcion`, `img`) VALUES
-(1, 'ANÁLISIS Y DESARROLLO DE SISTEMAS DE INFORMACIÓN', "El programa de formación ADSI (Análisis y Desarrollo de Sistemas de Información) del Centro de Servicios Financieros en la Regional Distrito Capital SENA (Servicio Nacional de Aprendizaje), en Bogotá Colombia, es un foco para el desarrollo de las competencias en desarrollo de software y TIC, que prepara a los aprendices para la vida y el trabajo, con lo cual se pretende impulsar el crecimiento de múltiples sectores laborales, el perfil de los egresados les permite proponer soluciones en la empresa, que ayuden a mejorar los diferentes procesos. Durante el tiempo que se lleva orientando esta formación los aprendices han mostrado excelentes resultados en competencias que realiza la entidad.", "../file-store/subjects/sena-logo.png"),
-(2, 'MATEMÁTICAS', "Contribuir transversalmente a la formación integral de los aprendices y comunidad educativa propiciando condiciones, posibilidades y estrategias que contribuyan a elevar la calidad de vida de los aprendices, y de la comunidad durante la permanencia en el SENA.", "../file-store/subjects/sena-logo.png");
+INSERT INTO `materia` (`ID_Materia`, `nombre`, `img`) VALUES
+(1, 'ANÁLISIS Y DESARROLLO DE SISTEMAS DE INFORMACIÓN', "../file-store/subjects/sena-logo.png"),
+(2, 'MATEMÁTICAS', "../file-store/subjects/sena-logo.png");
 
 -- --------------------------------------------------------
 --
