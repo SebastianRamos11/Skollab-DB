@@ -36,7 +36,7 @@ CREATE TABLE `rol` (
 
 INSERT INTO `rol` (`ID_Rol`, `tipo`) VALUES 
 (1, 'Administrador'),
-(2, 'Instructor'),
+(2, 'Profesor'),
 (3, 'Aprendiz');
 
 --
