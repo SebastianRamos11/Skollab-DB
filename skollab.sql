@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2023 a las 22:39:07
+-- Tiempo de generación: 22-03-2023 a las 22:25:52
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -48,13 +48,15 @@ INSERT INTO `actividad` (`ID_Actividad`, `ID_Persona`, `ID_Ficha`, `asunto`, `de
 (3, 3, 1, 'Números primos', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-10-07', NULL),
 (4, 3, 1, 'Radicación y racionalización', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2024-02-21', NULL),
 (5, 2, 1, 'Grámatica', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-10-28', '../file-store/activities/example.png'),
-(7, 2, 1, 'Literatura colombiana', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-12-01', NULL),
+(7, 2, 1, 'Literatura colombiana', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-22', '2023-12-01', NULL),
 (8, 4, 1, 'Igualdad social', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-08-03', NULL),
 (9, 4, 1, 'Constitución del 91', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2024-01-30', NULL),
 (10, 3, 1, 'Logaritmos', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-12-15', '../file-store/activities/example.png'),
 (11, 3, 1, 'Ecuaciones', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2024-03-08', NULL),
 (12, 3, 1, 'Álgebra', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-11-09', NULL),
-(13, 3, 1, 'Evaluación', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-12-22', NULL);
+(13, 3, 1, 'Evaluación', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-21', '2023-12-22', NULL),
+(14, 2, 1, 'Ortografía', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-22', '2024-01-05', NULL),
+(15, 2, 1, 'Biografía', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem a nemo fugit iusto reiciendis repellat optio, cumque, reprehenderit dolor tempore laboriosam unde nisi nesciunt, velit commodi deleniti dicta voluptatem porro?', '2023-03-22', '2024-01-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -221,7 +223,9 @@ INSERT INTO `evidencia` (`ID_Evidencia`, `ID_Persona`, `ID_Actividad`, `descripc
 (54, 6, 3, 'Entrego actividad.', '2023-03-21', '../file-store/evidences/example.png', NULL, NULL, 0),
 (55, 6, 4, 'Entrego actividad.', '2023-03-21', '../file-store/evidences/example.png', 90, 'Muy bien.', 0),
 (56, 6, 10, 'Entrego actividad.', '2023-03-21', '../file-store/evidences/example.png', 100, 'Bien hecho!', 0),
-(57, 6, 8, 'Entrego actividad.', '2023-03-21', '../file-store/evidences/example.png', NULL, NULL, 0);
+(57, 6, 8, 'Entrego actividad.', '2023-03-21', '../file-store/evidences/example.png', NULL, NULL, 0),
+(58, 9, 5, 'Entrego actividad.', '2023-03-22', '../file-store/evidences/example.png', 100, 'Excelente', 0),
+(59, 9, 7, 'Entrego actividad.', '2023-03-22', '../file-store/evidences/example.png', 80, 'Bien', 0);
 
 -- --------------------------------------------------------
 
@@ -439,7 +443,7 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  MODIFY `ID_Actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_Actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `anuncio`
@@ -451,7 +455,7 @@ ALTER TABLE `anuncio`
 -- AUTO_INCREMENT de la tabla `evidencia`
 --
 ALTER TABLE `evidencia`
-  MODIFY `ID_Evidencia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `ID_Evidencia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `ficha`
