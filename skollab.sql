@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `actividad` (
-  `ID_Actividad` int(10) NOT NULL,
-  `ID_Persona` int(10) NOT NULL,
-  `ID_Ficha` int(10) NOT NULL,
+  `ID_Actividad` bigint(10) NOT NULL,
+  `ID_Persona` bigint(10) NOT NULL,
+  `ID_Ficha` bigint(10) NOT NULL,
   `asunto` varchar(60) NOT NULL,
   `descripcion` varchar(400) DEFAULT NULL,
   `fecha` date NOT NULL,
@@ -65,8 +65,8 @@ INSERT INTO `actividad` (`ID_Actividad`, `ID_Persona`, `ID_Ficha`, `asunto`, `de
 --
 
 CREATE TABLE `ambiente_virtual` (
-  `ID_Persona` int(10) NOT NULL,
-  `ID_Ficha` int(10) NOT NULL
+  `ID_Persona` bigint(10) NOT NULL,
+  `ID_Ficha` bigint(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -105,8 +105,8 @@ INSERT INTO `ambiente_virtual` (`ID_Persona`, `ID_Ficha`) VALUES
 --
 
 CREATE TABLE `anuncio` (
-  `ID_Anuncio` int(10) NOT NULL,
-  `ID_Persona` int(10) NOT NULL,
+  `ID_Anuncio` bigint(10) NOT NULL,
+  `ID_Persona` bigint(10) NOT NULL,
   `asunto` varchar(60) NOT NULL,
   `descripcion` varchar(400) NOT NULL,
   `fecha` date NOT NULL,
@@ -130,9 +130,9 @@ INSERT INTO `anuncio` (`ID_Anuncio`, `ID_Persona`, `asunto`, `descripcion`, `fec
 --
 
 CREATE TABLE `curso` (
-  `ID_Ficha` int(10) NOT NULL,
-  `ID_Materia` int(10) NOT NULL,
-  `ID_Instructor` int(10) NOT NULL
+  `ID_Ficha` bigint(10) NOT NULL,
+  `ID_Materia` bigint(10) NOT NULL,
+  `ID_Instructor` bigint(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -151,9 +151,9 @@ INSERT INTO `curso` (`ID_Ficha`, `ID_Materia`, `ID_Instructor`) VALUES
 --
 
 CREATE TABLE `evidencia` (
-  `ID_Evidencia` int(10) NOT NULL,
-  `ID_Persona` int(10) NOT NULL,
-  `ID_Actividad` int(10) NOT NULL,
+  `ID_Evidencia` bigint(10) NOT NULL,
+  `ID_Persona` bigint(10) NOT NULL,
+  `ID_Actividad` bigint(10) NOT NULL,
   `descripcion` varchar(400) DEFAULT NULL,
   `fecha` date NOT NULL,
   `url` varchar(1000) DEFAULT NULL,
@@ -234,10 +234,10 @@ INSERT INTO `evidencia` (`ID_Evidencia`, `ID_Persona`, `ID_Actividad`, `descripc
 --
 
 CREATE TABLE `ficha` (
-  `ID_Ficha` int(10) NOT NULL,
-  `numero` int(10) NOT NULL,
+  `ID_Ficha` bigint(10) NOT NULL,
+  `numero` bigint(10) NOT NULL,
   `descripcion` varchar(1000) DEFAULT NULL,
-  `codigo` int(10) NOT NULL
+  `codigo` bigint(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -254,7 +254,7 @@ INSERT INTO `ficha` (`ID_Ficha`, `numero`, `descripcion`, `codigo`) VALUES
 --
 
 CREATE TABLE `materia` (
-  `ID_Materia` int(10) NOT NULL,
+  `ID_Materia` bigint(10) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `img` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -279,15 +279,15 @@ INSERT INTO `materia` (`ID_Materia`, `nombre`, `img`) VALUES
 --
 
 CREATE TABLE `persona` (
-  `ID_Persona` int(10) NOT NULL,
-  `ID_Tipo_Documento` int(10) NOT NULL,
-  `ID_Rol` int(10) NOT NULL,
-  `num_documento` int(10) NOT NULL,
+  `ID_Persona` bigint(10) NOT NULL,
+  `ID_Tipo_Documento` bigint(10) NOT NULL,
+  `ID_Rol` bigint(10) NOT NULL,
+  `num_documento` bigint(10) NOT NULL,
   `nombres` varchar(20) NOT NULL,
   `apellidos` varchar(20) NOT NULL,
   `correo_electronico` varchar(50) NOT NULL,
   `contraseña` varchar(155) NOT NULL,
-  `telefono` int(10) DEFAULT NULL
+  `telefono` bigint(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -327,7 +327,7 @@ INSERT INTO `persona` (`ID_Persona`, `ID_Tipo_Documento`, `ID_Rol`, `num_documen
 --
 
 CREATE TABLE `rol` (
-  `ID_Rol` int(10) NOT NULL,
+  `ID_Rol` bigint(10) NOT NULL,
   `tipo` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -347,7 +347,7 @@ INSERT INTO `rol` (`ID_Rol`, `tipo`) VALUES
 --
 
 CREATE TABLE `tipo_documento` (
-  `ID_Tipo_Documento` int(10) NOT NULL,
+  `ID_Tipo_Documento` bigint(10) NOT NULL,
   `tipo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -443,49 +443,49 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  MODIFY `ID_Actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_Actividad` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `anuncio`
 --
 ALTER TABLE `anuncio`
-  MODIFY `ID_Anuncio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Anuncio` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `evidencia`
 --
 ALTER TABLE `evidencia`
-  MODIFY `ID_Evidencia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `ID_Evidencia` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `ficha`
 --
 ALTER TABLE `ficha`
-  MODIFY `ID_Ficha` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Ficha` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `ID_Materia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Materia` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `ID_Persona` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_Persona` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `ID_Rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Rol` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
-  MODIFY `ID_Tipo_Documento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Tipo_Documento` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
